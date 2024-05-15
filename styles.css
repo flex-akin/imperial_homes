@@ -1,0 +1,58 @@
+.intro { 
+    text-align: center; 
+    font-family: Arial;
+  }
+  
+  h2 { 
+    font-size: 32px;
+  }
+  
+  p { 
+    font-size: 12pt;
+  }
+  
+  #image-gallery { 
+    /* width: 600px;  */
+    margin: 0 auto;
+  }
+  
+  #current-image { 
+    background-size: cover;
+    background-position: center;
+    height: 40rem;
+    border-radius: 10px;
+  } 
+  
+  #image-thumbs { 
+    display: flex; 
+    justify-content: center; 
+    margin-top: 20px;
+  }
+  
+  .thumb { 
+    width: 80px; 
+    height: 80px; 
+    object-fit: cover; 
+    margin-right: 4px; 
+    cursor: pointer;
+    padding: 0;
+    padding-bottom: 4px;
+  }
+
+  #info {
+    font-style: italic;
+    font-size: 10px;
+    color: red;
+  }
+
+  #price, #unit , #bed {
+    font-size: 60px;
+  }
+
+  .card {
+    box-shadow: -1px -4px 48px -20px rgba(0,0,0,0.4);
+    -webkit-box-shadow: -1px -4px 48px -20px rgba(0,0,0,0.4);
+    -moz-box-shadow: -1px -4px 48px -20px rgba(0,0,0,0.4);
+  }
+
+
