@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Imperial Homes Mortgage Bank</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="assets/img/imperial_logo.png" rel="icon">
+  <link href="assets/img/imperial_logo.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/4635ab7630.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="./assets/js/easy-number-separator.js"></script>
+
+
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="styles.css">
+
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+ 
+</head>
+
+<body>
+  <!-- Modal -->
+  <script>
+    $(document).ready(function () {
+      $("#enquiry").on("submit", function (event) {
+        event.preventDefault();
+  
+        let firstName = $("#exampleFormControlInput1").val();
+        let lastName = $("#exampleFormControlInput2").val();
+        let phoneNumber = $("#exampleFormControlInput3").val();
+        let email = $("#exampleFormControlInput4").val();
+        let propertyName = $("#exampleFormControlInput5").val();
+        let enquiry = $("#exampleFormControlTextarea1").val();
+
+        let sendData = {
+            firstName : firstName,
+            lastName : lastName,
+            phoneNumber : phoneNumber,
+            email : email,
+            propertyName : propertyName,
+            enquiry : enquiry
+          }
+  
+        $.ajax({
+          url: "https://imperial-backend.imperialmortgagebank.com/sendEnquiryMail",
+          method: "post",
+          contentType: "application/json",
+         
+          data : JSON.stringify(sendData),
+         
+          success: function (res) {
+                    console.log(res)
+                    alert("message sent")
+
+                    $("#team").html(
+                      `
+                      <div class="alert alert-success" role="alert">
+Message Sent
+</div>`
+                    );
+                    
+                    
+                  },
+                  error : function (err) {
+                    console.log(err)
+                    $("#team").html(
+                       `
+                       <div class="alert alert-danger" role="alert">
+  A simple danger alert—check it out!
+</div>`
+                    );
+        }
+        });
+      });
+    });
+  </script>
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Enquiries</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+     <form action="" id="enquiry">
+        <div class="modal-body">
+            <div id="team"></div>
+        <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">First Name</label>
+            <input type="text" class="form-control" id="exampleFormControlInput1" required >
+          </div>
+         
+        <div class="mb-3">
+            <label for="exampleFormControlInput2" class="form-label">Last Name</label>
+            <input type="text" class="form-control" id="exampleFormControlInput2" required>
+          </div>
+         
+        <div class="mb-3">
+            <label for="exampleFormControlInput3" class="form-label">Phone Number</label>
+            <input type="text" class="form-control" id="exampleFormControlInput3" required>
+          </div>
+         
+        <div class="mb-3">
+            <label for="exampleFormControlInput4" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleFormControlInput4" required>
+          </div>
+         
+        <div class="mb-3">
+            <label for="exampleFormControlInput5" class="form-label">Property Name</label>
+            <input type="text" class="form-control" id="exampleFormControlInput5" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Specific Enquiry</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
+          </div>
+         
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">send</button>
+        </div>
+     </form>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="exampleModalOne" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Enquiries</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <script>
+            $(document).ready(function () {
+              $("#app").on("submit", function (event) {
+                event.preventDefault();
+          
+                let fullName = $("#exampleFormControlInput10").val();
+                let phoneNumber = $("#exampleFormControlInput11").val();
+                let email = $("#exampleFormControlInput12").val();
+                let age = $("#exampleFormControlInput13").val();
+                let address = $("#exampleFormControlInput14").val();
+                let occupation = $("#exampleFormControlInput15").val();
+                let salaryEarned = $("#exampleFormControlInput16").val();
+                let industry = $("#exampleFormControlInput17").val();
+                let propertyName = $("#exampleFormControlInput18").val();
+                let equity = $("#exampleFormControlInput19").val();
+                let title = $("#exampleFormControlInput09").val();
+        
+                let sendAData = {
+                    fullName ,
+                    title ,
+                    phoneNumber ,
+                    propertyName ,
+                    equity ,
+                    age ,
+                    address ,
+                    occupation ,
+                    salaryEarned,
+                    industry 
+                  }
+          
+                $.ajax({
+                  url: "https://imperial-backend.imperialmortgagebank.com/sendApplicationMail",
+                  method: "post",
+                  contentType: "application/json",
+                 
+                  data : JSON.stringify(sendAData),
+                 
+                  success: function (res) {
+                    console.log(res)
+                    alert("message sent")
+                    $("#teamOne").html(
+                        `<div class="alert alert-success" role="alert">
+Message Sent
+</div>`
+                    );
+                    
+                    
+                  },
+                  error : function (err) {
+                    console.log(err)
+                    $("#teamOne").html(
+                       `<div class="alert alert-danger" role="alert">
+  A simple danger alert—check it out!
+</div>`               );
+        }
+                });
+              });
+            });
+          </script>
+     <form id="app" action="">
+        <div class="modal-body">
+            <div id="teamOne"></div>
+
+            <div class="mb-3">
+                <label for="exampleFormControlInput3" class="form-label">Realtor / Direct Buyer</label>
+              
+                <select class="form-select" aria-label="Default select example" id="exampleFormControlInput09" onchange="buyReal(this.value)">
+                    <option selected></option>
+                    <option value="Realtor">Realtor</option>
+                    <option value="Buyer">Buyer</option>
+                  </select>
+              </div>
+             
+        <div class="mb-3">
+            <label for="exampleFormControlInput2" class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="exampleFormControlInput10" required>
+          </div>
+         
+        <div class="mb-3">
+            <label for="exampleFormControlInput3" class="form-label">Phone Number</label>
+            <input type="text" class="form-control" id="exampleFormControlInput11" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="exampleFormControlInput4" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="exampleFormControlInput12" required>
+          </div>
+         
+     <div class="remove">
+        <div class="mb-3">
+            <label for="exampleFormControlInput3" class="form-label">Age (in Years)</label>
+            <input type="text" class="form-control" id="exampleFormControlInput13" >
+          </div>
+         
+        <div class="mb-3">
+            <label for="exampleFormControlInput3" class="form-label">Address</label>
+            <input type="text" class="form-control" id="exampleFormControlInput14" >
+          </div>
+         
+        <div class="mb-3">
+            <label for="exampleFormControlInput3" class="form-label">Occupation</label>
+            <input type="text" class="form-control" id="exampleFormControlInput15" >
+          </div>
+
+        <div class="mb-3">
+            <label for="exampleFormControlInput3" class="form-label">Salary Earner / Self Employed</label>
+            <select class="form-select" aria-label="Default select example" id="exampleFormControlInput16" onchange="buyReal(this.value)">
+                <option selected></option>
+                <option value="Realtor">Salary Earner</option>
+                <option value="Buyer">Self Employed</option>
+              </select>
+          </div>
+         
+          
+        <div class="mb-3">
+            <label for="exampleFormControlInput3" class="form-label">Industry / Sector</label>
+            <input type="text" class="form-control" id="exampleFormControlInput17" >
+          </div>
+         
+      
+         
+      
+     </div>
+     <div class="mb-3">
+      <label for="exampleFormControlInput5" class="form-label">Property Name</label>
+      <input type="text" class="form-control" id="exampleFormControlInput18" required>
+    </div>
+          <div class="mb-3">
+           
+            <label for="exampleFormControlTextarea1" class="form-label">Equity Contribution(₦)</label>
+            <input type="text" class="form-control number-separator" id="exampleFormControlInput19" required>
+         </div>
+         
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">send</button>
+        </div>
+     </form>
+
+      </div>
+    </div>
+  </div>
+
+
+  <div class="d-flex row-reverse"></div>
+  <div class="d-flex justify-content-start"></div>
+  <header  id="header" class="fixed-top d-flex align-items-center">
+    <div class="container-fluid d-flex align-items-center justify-content-between">
+      <div class="logo d-flex flex-row align-items-center">
+        <a href="index.html"><img src="assets/img/imperial_logo.png" alt="" class="img-fluid"></a>
+        <div>
+          <p id="imperial" style="font-size:20px; font-weight:700;">Imperial Homes Mortgage Bank</p>
+  
+        </div>
+  
+      </div>
+    
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="index.html">Home</a></li>
+          <li class="dropdown"><a href=""><span>About Us</span> <i class="fa-sharp fa-solid fa-caret-down"></i></a>
+            <ul>
+              <li><a href="about.html">About Us</a></li>
+              <li class="dropdown"><a href="#"><span>Leadership</span> <i class="fa-solid fa-caret-right"></i> </i></a>
+                <ul>
+                  <li><a href="#">Directors</a></li>
+                  <li><a href="management.html">Management</a></li>
+      
+                </ul>
+              </li>
+              <li><a href="./assets/books/Whistle-Blowing-Policy.pdf">Whitsle Blower Policy</a></li>
+              <li><a href="./assets/books/GUIDELINES-ON-ACCESSING-RETIREMENT-SAVINGS-ACCOUNT.pdf">RSA Access Guidelines</a></li>
+              <li><a href="./assets/books/Privacy-policy-IHMB-LSYS-004.pdf">Privacy Policy</a></li>
+            
+            </ul>
+          </li>
+          <li><a class="nav-link scrollto" href="productandservices.html">Product & Services</a></li>
+          <li class="dropdown"><a href="#"><span>Forms</span> <i class="fa-sharp fa-solid fa-caret-down"></i> </a>
+            <ul>
+              <li><a href="https://withdrawalrequest.imperialmortgagebank.com/">Withdrawal Request</a></li>
+              <li><a href="https://mortgagerequest.imperialmortgagebank.com/">Mortgage Request</a></li>
+              <li class="dropdown"><a href="https://www.accountopening.imperialmortgagebank.com/"><span>Account Opening</span></a>
+               
+              </li>
+              <li><a href="loaneligibility.html">Loan Eligibility Calculator</a></li>
+              <li><a href="http://rsa.imperialmortgagebank.com/">RSA Form</a></li>
+              <li><a href="ninvalidation.html">BVN & NIN Collection</a></li>
+              <li><a href="https://account-reactivation.imperialmortgagebank.com">Account Re-activation</a></li>
+              <li><a href="https://www.accountopening.imperialmortgagebank.com/referee/individual">Referee Form</a></li>
+              <li><a href="./assets/books/corporatebank.pdf">Corporate i-Bank Form</a></li>
+
+                  <li><a href="propertyInterest.html">Property Interest Questionaire Form</a></li>
+                  <li><a href="nhfform.html">NHF Application Form</a></li>
+                  
+            </ul>
+          </li>
+          <li><a class="nav-link scrollto" href="contact.html">Support</a></li>
+        
+          <li><a class="nav-link scrollto" href="property.html">Properties</a></li>
+          <li><a id="remv" class="nav-link scrollto" href="https://ibs.imperialmortgagebank.com">Internet Banking</a></li>
+        
+          <li><a id="remv" class="nav-link scrollto" href="https://www.accountopening.imperialmortgagebank.com/">Open Account</a></li>
+
+        </ul>
+      
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+      <div id="extra">
+        <a  href="https://www.accountopening.imperialmortgagebank.com/" > 
+     <p class="getstarted d-flex align-content-around flex-wrap">
+      Open <br> Account 
+     </p> 
+    </a>
+
+    
+     <a href="https://ibs.imperialmortgagebank.com">
+     <p class="getstarted d-flex align-content-around flex-wrap">
+      Internet <br> Banking
+     </p> 
+    </a>
+     <!-- <a href="https://www.mortgagebroker.imperialmortgagebank.com/">
+     <p class="getstarted d-flex align-content-around flex-wrap">
+      Realtor <br>
+     </p> 
+    </a> -->
+    <a href="ninvalidation.html">
+      <p class="getstarted d-flex align-content-around flex-wrap">
+       NIN Collection <br>
+      </p> 
+     </a>
+
+
+      </div>
+
+    </div>
+  </header><!-- End Header -->
+
+  <section id="contater" class="contater">
+    <div class="container"  style="padding-top: 100px;" data-aos="fade-up">
+<div class="row">
+    <div class="col-lg-12">
+    <div class="intro"> 
+        <h2 id="projectname"></h2> 
+        <p id="location"> </p> 
+        <div id="image-gallery">
+            <div id="current-image"></div>
+          <!-- <img id="current-image"  alt="Image 1"> -->
+          <div id="image-thumbs" class="row"></div>
+        <p id="info" class="col-lg-12 col-sm-12">Select a thumbnail above to view the image</p> 
+        <div class="d-flex justify-content-center">
+          <div class="card mt-3 border-0 " style="width: 600px">
+            <div class="card-body ">
+              <div class=" row d-flex flex-row justify-content-between">
+                <div class="p-0 col-lg-3 col-sm-12 align-items-center">
+                   Available Units <br />
+                   <span id="unit"></span>
+                </div>
+                <div class="p-2 col-lg-3 col-sm-12 align-items-center" >
+                    Number of Bedrooms<br />
+                    <span id="bed"></span>
+
+                </div>
+                <div class="p-2 col-lg-3 col-sm-12 align-items-center">
+                   Price <br />
+                   <span id="price"></span>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+         
+
+        </div>
+      </div> 
+      </div>
+
+</div>
+<div class="row d-flex justify-content-center pe-0 ps-0 pt-4">
+<!-- Button trigger modal -->
+<div class="col-lg-3">
+    <button type="button" class="btn btn-primary w-100 mb-1" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Make Enquires
+      </button>
+</div>
+<div class="col-lg-3">
+    <button type="button" class="btn btn-primary w-100 mb-1" data-bs-toggle="modal" data-bs-target="#exampleModalOne">
+      Apply For Mortgage Financing
+      </button>
+</div>
+<div class="col-lg-3">
+    <a href="loaneligibility.html">
+        <button type="button" class="btn btn-primary w-100">
+            Mortgage Calculator
+          </button>
+    </a>
+</div>
+
+<div class="col-lg-3">
+  <a href="https://www.rsa.imperialmortgagebank.com">
+      <button type="button" class="btn btn-primary w-100">
+          Apply Using RSA
+        </button>
+  </a>
+</div>
+
+</div>
+  </div>
+  </section>
+ 
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    
+
+    <div class="footer-top">
+      <div class="container">
+        <div class="row">
+
+          <div class="col-lg-6 col-md-6 footer-contact">
+            <h3><img src="./assets/img/imperial_logo.png" alt=""></h3>
+            <p>Head Office
+              27 Keffi Street,  
+              off Awolowo Road,
+              Ikoyi, Lagos <br>
+              Abuja Office: Plot 266, FMBN Building, By Ceddi Plaza, Central Business District, Abuja. <br>
+              <strong>Phone:</strong> (+234) 01-2716122, (+234) 01-2716122 <br>
+              <strong>Email:</strong> info@imperialmortgagebank.com<br>
+            </p>
+          </div>
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Useful Links</h4>
+            <ul>
+              <li><i class="bx bx-chevron-right"></i> <a href="index.html">Home</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="about.html">About us</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="https://withdrawalrequest.imperialmortgagebank.com/">Withdrawal Request</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="https://www.accountopening.imperialmortgagebank.com/">Open Account</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="https://ibank.imperialmortgagebank.com/bankonline/">Internet Banking</a></li>
+            </ul>
+          </div>
+
+       
+
+          <div class="col-lg-3 col-md-6 footer-links">
+            <h4>Our Social Networks</h4>
+            <p></p>
+            <div class="social-links mt-3">
+              <a href="https://www.instagram.com/imperialhomesmortgagebank/" class="instagram"><i class="bx bxl-instagram"></i></a>
+              <a href="https://www.linkedin.com/company/imperial-homes-mortgage-bank-limited/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+              <a href="https://twitter.com/ImperialHomesMB" class="twitter"><i class="bx bxl-twitter"></i></a>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div class="container py-4">
+      <div class="copyright">
+        &copy; Copyright <strong><span>Imperial Homes Mortgage Bank</span></strong>. All Rights Reserved
+      </div>
+    
+    </div>
+  </footer><!-- End Footer -->
+
+  <!-- <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a> -->
+
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/aos/aos.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+  <script src="main.js"></script>
+
+</body>
+
+</html>
