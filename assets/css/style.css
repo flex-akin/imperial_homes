@@ -79,11 +79,7 @@ h6,
 # Header
 --------------------------------------------------------------*/
 #header {
-<<<<<<< HEAD
   height: 100px;
-=======
-  /* height: 80px; */
->>>>>>> bf08dd236673f1f5098167b8e27fd44466da2dea
   transition: all 0.5s;
   z-index: 997;
   transition: all 0.5s;
@@ -559,12 +555,9 @@ section {
 
 .section-title {
   text-align: center;
-<<<<<<< HEAD
   padding-bottom: 20px;
   padding-top: 30px;
-=======
   padding-bottom: 30px;
->>>>>>> bf08dd236673f1f5098167b8e27fd44466da2dea
 }
 
 .section-title h2 {
@@ -1202,9 +1195,11 @@ main {
     align-items: flex-start;
   }
   #modal-image {
-    max-width: 350px;
-    margin-right: 20px;
-    height: 250px;
+    width: 100% !important;
+    height: 500px !important; 
+    object-fit: cover;
+    margin-right: 0;
+    margin-bottom: 0px;
     }
     
 #modal-name {
@@ -1226,8 +1221,9 @@ main {
     justify-items: flex-start;
   }
   #modal-image {
-    max-width: 100%;
-    height: 250px;
+    width: 100% !important;
+    height: 450px !important; 
+    object-fit: cover;
     margin-right: 0;
     margin-bottom: 0px;
   }
@@ -1246,7 +1242,7 @@ main {
 }
 
 #modal-image {
-  max-width: 350px;
+  width: 350px;
   margin-right: 20px;
   height: 100%;
 }
@@ -1255,8 +1251,7 @@ main {
   flex: 1;
   padding: 30px;
   color: #fafafa;
-  /* white-space: pre-wrap;    */
-  white-space: pre-line
+  white-space: pre-line 
 }
 
 #modal-name {
@@ -1311,9 +1306,7 @@ main {
 }
 
 
-=======
-# Team
---------------------------------------------------------------*/
+
 .team {
   background: #fff;
   padding: 60px 0;
@@ -1401,7 +1394,6 @@ main {
   left: 0;
   transition: left ease-in-out 0.3s;
 }
->>>>>>> bf08dd236673f1f5098167b8e27fd44466da2dea
 
 /*--------------------------------------------------------------
 # Clients
