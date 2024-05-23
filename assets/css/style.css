@@ -557,7 +557,10 @@ section {
   text-align: center;
   padding-bottom: 20px;
   padding-top: 30px;
+<<<<<<< HEAD
   padding-bottom: 30px;
+=======
+>>>>>>> 28abe28b85023a77ab035acb6b5b43ba3db780cc
 }
 
 .section-title h2 {
@@ -1005,7 +1008,6 @@ section {
 }
 
 /*--------------------------------------------------------------
-<<<<<<< HEAD
 # Leadership
 --------------------------------------------------------------*/
 
@@ -1188,6 +1190,8 @@ main {
   #modal{
     display: flex;
     flex-direction: column;
+    width: 90%;
+    overflow: hidden;
   }
   .modal-body {
     display: flex;
@@ -1213,6 +1217,8 @@ main {
   #modal{
     display: flex;
     flex-direction: column;
+    width: 90%;
+    overflow: hidden;
   }
   .modal-body {
     display: flex;
@@ -1306,6 +1312,7 @@ main {
 }
 
 
+<<<<<<< HEAD
 
 .team {
   background: #fff;
@@ -1394,6 +1401,8 @@ main {
   left: 0;
   transition: left ease-in-out 0.3s;
 }
+=======
+>>>>>>> 28abe28b85023a77ab035acb6b5b43ba3db780cc
 
 /*--------------------------------------------------------------
 # Clients

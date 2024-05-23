@@ -77,6 +77,7 @@ Version: 2.0.0
   
 Version: 1.0.0
 - Initial Release
+<<<<<<< HEAD
 =======
 Version: 4.9.0
   - Updated Bootstrap to version 5.2.1
@@ -158,3 +159,5 @@ Version: 2.0.0
 Version: 1.0.0
 - Initial Release
 
+=======
+>>>>>>> 28abe28b85023a77ab035acb6b5b43ba3db780cc
