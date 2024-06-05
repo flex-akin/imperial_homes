@@ -1193,14 +1193,20 @@ main {
     width: 90%;
     overflow: hidden;
   }
+  .modal-text{
+    padding-top: 0px !important;
+  }
   .modal-body {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
   }
+  .modal-image{
+    padding: 0px !important;
+  }
   #modal-image {
     width: 100% !important;
-    height: 500px !important; 
+    height: auto !important; 
     object-fit: cover;
     margin-right: 0;
     margin-bottom: 0px;
@@ -1226,9 +1232,15 @@ main {
     align-items: flex-start;
     justify-items: flex-start;
   }
+  .modal-image{
+    padding: 0px !important;
+  }
+  .modal-text{
+    padding-top: 0px !important;
+  }
   #modal-image {
     width: 100% !important;
-    height: 450px !important; 
+    height: auto !important; 
     object-fit: cover;
     margin-right: 0;
     margin-bottom: 0px;
@@ -1246,7 +1258,10 @@ main {
   display: flex;
   align-items: flex-start;
 }
-
+.modal-image{
+  display: flex;
+  padding: 70px 30px;
+}
 #modal-image {
   width: 350px;
   margin-right: 20px;
