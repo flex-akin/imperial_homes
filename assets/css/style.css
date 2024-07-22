@@ -1096,14 +1096,14 @@ main {
 
 .image-container {
   width: 200px;
-  height: 258px;
+  /* height: 250px; */
   overflow: hidden;
   position: relative;
 }
 
 .manager-image {
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
   display: block;
   margin-bottom: 20px;
   transition: transform 0.5s ease, right 0.5s ease, opacity 0.5s ease;
@@ -1241,7 +1241,7 @@ main {
 
 .modal-text {
   flex: 1;
-  padding: 30px;
+  padding: 0px 30px;
   color: #fafafa;
   white-space: pre-line;
 }
@@ -1249,7 +1249,7 @@ main {
 #modal-name {
   color: #ed3c0d;
   font-size: 25px;
-  margin-top: 10px;
+  /* margin-top: 10px; */
   margin-bottom: -15px;
 }
 #modal-title {
