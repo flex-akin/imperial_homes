@@ -2333,3 +2333,8 @@ main {
 .getstarted {
   height: 60px;
 }
+#siqbtndiv{
+  position: fixed;
+  bottom: 60px;
+  right: 15px;
+}
