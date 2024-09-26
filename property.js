@@ -31,7 +31,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   loadNextPage = (page) => {
     fetch(
-      `https://propertyapi.ivantage.africa/api/ivantage/properties?size=52&page=${page}`
+      `https://radiusv2api.ivantage.africa/api/ivantage/properties?size=40&page=${page}`
+      // `https://propertyapi.ivantage.africa/api/ivantage/properties?size=52&page=${page}`
     )
       .then((response) => {
         if (!response.ok) {
