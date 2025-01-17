@@ -152,26 +152,101 @@
     <div class="container" data-aos="fade-up">
 
       <div class="section-title">
-        <p>Loan Calculator</p>
+        <p>Mortgage Pre-qualification Form</p>
       </div>
-
       <div class="row">
         <div class="col-lg-3"></div>
         <div class="col-lg-6 mt-5 mt-lg-0 d-flex " data-aos="fade-up" data-aos-delay="200">
           <form role="form" class="php" onsubmit="calculate(); return false">
             <div class="row">
+              <pre id="result"></pre>
+              <div class="form-group col-md-12">
+                <label for="name" class="label">Name</label>
+                <input type="text" name="name" class="form-control" id="name" placeholder="" >
+              </div> 
+            </div>
+            <div class="row">
+              <div class="form-group col-md-12">
+                <label for="name" class="label">Email Address</label>
+                <input type="text" name="name" class="form-control" id="emailAddress" placeholder="" >
+              </div> 
+            </div>
+            <div class="row">
+              <div class="form-group col-md-12">
+                <label for="name" class="label">Phone Number</label>
+                <input type="text" name="name" class="form-control number" id="phoneNumber" placeholder="" >
+              </div> 
+            </div>
+            <div class="row">
+              <div class="form-group col-md-12">
+                <label for="name" class="label">Name of Property Interested In</label>
+                <input type="text" name="name" class="form-control" id="propertyName" placeholder="" >
+              </div> 
+            </div>
+
+            <div class="row">
               <div class="form-group col-md-12">
                 <label for="name" class="label">Net Monthly Income</label>
-                <input type="text" name="name" class="form-control number-separator" id="monthlyIncome" placeholder="" required>
-              </div>
-              
-              
+                <input type="text" name="name" class="form-control number-separator" id="monthlyIncome" placeholder="" >
+              </div> 
+            </div>
+            <div class="row">
+              <div class="form-group col-md-12">
+                <label for="rsa" class="label">Do you have an RSA Account?</label>
+                <div class="d-flex gap-3 ">
+                  <div class="d-flex align-items-center">
+
+                    <input type="radio" 
+                    id="yes" 
+                    name="rsaOptions" 
+                    value="yes">
+                    <label for="yes">Yes</label>
+                  </div>
+           <div class="d-flex align-items-center">
+
+             <input type="radio" 
+             id="no" 
+             name="rsaOptions" 
+             value="no">
+             <label for="no">No</label>
+            </div>
+            </div>
+              </div> 
+            </div>
+            <div class="row">
+              <div class="form-group col-md-12">
+                <label for="coborrower" class="label">Is there a Co-borrower?</label>
+                <div class="d-flex gap-3 ">
+                  <div class="d-flex align-items-center">
+
+                    <input type="radio" 
+                    id="yes" 
+                    name="coBorrowerOptions" 
+                    value="yes">
+                    <label for="yes">Yes</label>
+                  </div>
+           <div class="d-flex align-items-center">
+
+             <input type="radio" 
+             id="no" 
+             name="coBorrowerOptions" 
+             value="no">
+             <label for="no">No</label>
+            </div>
+            </div>
+              </div> 
+            </div>
+            <div class="row" style="display: none;">
+              <div class="form-group col-md-12" >
+                <label for="name" class="label">Net Monthly Income of Co-borrower</label>
+                <input type="text" name="name" class="form-control number-separator" id="coBorrowerMonthlyIncome" placeholder=""  >
+              </div> 
             </div>
 
             <div class="row">
                 <div class="form-group col-md-12 mt-3 mt-md-0">
                     <label for="name" class="label">Property Price</label>
-                    <input type="text" class="form-control number-separator"  id="propertyPrice" placeholder="" required>
+                    <input type="text" class="form-control number-separator"  id="propertyPrice" placeholder="" >
                   </div>
                 
                 
@@ -181,8 +256,8 @@
 
             <div class="row">
                 <div class="form-group col-md-12 mt-3 mt-md-0">
-                    <label for="name" class="label">Equity Contribution (in %)</label>
-                    <input type="number" class="form-control" min="0" max="100" onkeyup="findLoanAmount()" id="equity" placeholder="" required>
+                    <label for="name"  class="label">Equity Contribution (in %)</label><span style="color: red;" id="equityUpdate">Equity can't be less than 20%</span>
+                    <input type="number"  class="form-control" min="20" max="100" onkeyup="findLoanAmount()" id="equity" placeholder="" >
                   </div>
 
              
@@ -190,7 +265,7 @@
             <div class="row">
               <div class="form-group col-md-12 mt-3 mt-md-0">
                 <label for="name" class="label">Loan Amount</label>
-                <input type="text" class="form-control"  id="loanAmount" disabled required >
+                <input type="text" class="form-control"  id="loanAmount" disabled  >
               </div>
                
 
@@ -200,24 +275,36 @@
             <div class="row">
                 <div class="form-group col-md-12 mt-3 mt-md-0">
                     <label for="name" class="label">Age</label>
-                    <input type="text" class="form-control number-separator" onkeyup="findTenor()" id="age" required>
+                    <input type="text" class="form-control number-separator" onkeyup="findTenor()" id="age" >
                   </div>
-
             </div>
 
             <div class="row">
               <div class="form-group col-md-12 mt-3 mt-md-0">
+            <label class="label" for="funding">Mortgage Funding Options</label>
+
+<select class="form-control" name="funding" id="funding">
+  <option class="form-control" value="commercial">Commercial Mortage 28% (Max 15 Years)</option>
+  <option class="form-control" value="mofi">MOFI (Ministry of Finance Incorporate) Mortage 12% (Max 10 Years)</option>
+  <option class="form-control" value="fhf">FHF (Family Homes Fund) Mortage 17% (Max 20 Years)</option>
+</select>
+</div>
+</div>
+
+            <div class="row">
+              <div class="form-group col-md-12 mt-3 mt-md-0">
                 <label for="name" class="label">Tenor</label> <span style="color: red;" id="tenor"></span>
-                <input type="number" min="1"  class="form-control"  id="tenure" required>
+                <input type="number" min="1"  class="form-control"  id="tenure" >
               </div>
 
             </div>
             <div class="form-group col-md-12 mt-3 mt-md-0">
               <label for="name" class="label">Interest Per Annum</label>
-              <input type="text" class="form-control"  id="email" value="27%" placeholder="" required disabled>
+              <input type="text" class="form-control"  id="email" value="27%" placeholder=""  disabled>
             </div>
             
             <div class="text-center"><button type="submit" >Calculate</button></div>
+            <div><p class="text-center">Results will be sent to your email</p></div>
           <div class="row result">
             <div class="col-lg-4">
               <span> Monthly Repayment: <i title="Management Fee is added" class="fa-sharp fa-solid fa-circle-info"></i></span>
