@@ -213,14 +213,15 @@
             </div>
               </div> 
             </div>
-            <div class="row">
+            <div class="row" >
               <div class="form-group col-md-12">
                 <label for="coborrower" class="label">Is there a Co-borrower?</label>
-                <div class="d-flex gap-3 ">
+                <div class="d-flex gap-3" >
                   <div class="d-flex align-items-center">
 
                     <input type="radio" 
                     id="yes" 
+                    onclick="coBorrowerMonthly()"
                     name="coBorrowerOptions" 
                     value="yes">
                     <label for="yes">Yes</label>
@@ -230,13 +231,14 @@
              <input type="radio" 
              id="no" 
              name="coBorrowerOptions" 
+             onclick="coBorrowerMonthly()"
              value="no">
              <label for="no">No</label>
             </div>
             </div>
               </div> 
             </div>
-            <div class="row" style="display: none;">
+            <div class="row" id="coBorrowerContainer" style="display: none;" >
               <div class="form-group col-md-12" >
                 <label for="name" class="label">Net Monthly Income of Co-borrower</label>
                 <input type="text" name="name" class="form-control number-separator" id="coBorrowerMonthlyIncome" placeholder=""  >

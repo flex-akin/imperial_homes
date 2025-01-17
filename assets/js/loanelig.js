@@ -18,6 +18,22 @@ const findTenor = () => {
   }
 };
 
+const coBorrowerMonthly = () => {
+  const coBorrowerOptions = document.getElementsByName("coBorrowerOptions");
+  const coBorrowerContainer = document.getElementById("coBorrowerContainer");
+  var coBorrower = null;
+  for (const radio of coBorrowerOptions) {
+    if (radio.checked) {
+      coBorrower = radio.value;
+      coBorrower == "yes"
+        ? (coBorrowerContainer.style.display = "block")
+        : (coBorrowerContainer.style.display = "none");
+
+      // console.log(coBorrowerContainer);
+      break;
+    }
+  }
+};
 const findLoanAmount = () => {
   var propertyPrice = document.getElementById("propertyPrice").value;
   var equity = document.getElementById("equity").value;
@@ -48,7 +64,7 @@ const calculate = async () => {
   //   "monthlyRepaymentResult"
   // ).value;
   // var dtiResult = document.getElementById("dtiResult").value;
-  // console.log("Errors: ");
+  // console.log(coBorrower);
   const rsaRadios = document.getElementsByName("rsaOptions");
 
   var rsa = null;
@@ -60,15 +76,10 @@ const calculate = async () => {
   }
 
   const coBorrowerOptions = document.getElementsByName("coBorrowerOptions");
-  const coBorrowerContainer = document.getElementById("coBorrowerContainer");
   var coBorrower = null;
   for (const radio of coBorrowerOptions) {
     if (radio.checked) {
       coBorrower = radio.value;
-      // coBorrower == "Yes"
-      //   ? (coBorrowerContainer.style.display = "block")
-      //   : (coBorrowerContainer.style.display = "none");
-
       break;
     }
   }
@@ -81,10 +92,11 @@ const calculate = async () => {
   if (!rsa) errors.push("Please select an RSA Option.");
   if (!propertyPrice) errors.push("Property Price cannot be empty.");
   if (!equity) errors.push("Equity cannot be empty.");
-  // if (!loanAmount) errors.push("Loan Amount cannot be empty.");
   if (!age) errors.push("Age cannot be empty.");
   if (!funding) errors.push("Please select  Funding option.");
   if (!coBorrower) errors.push("Please select a coborrower option.");
+  if (coBorrower == "yes" && !coBorrowerMonthlyIncome)
+    errors.push("Co-Borrower Monthly Income cannot be empty.");
   const resultElement = document.getElementById("result");
   if (errors.length > 0) {
     // Display errors
@@ -148,7 +160,7 @@ const calculate = async () => {
       monthlyRepayment,
       dti,
     };
-    console.log(jsonObject);
+    // console.log(jsonObject);
     try {
       // Post the JSON to an API
       const response = await fetch("https://example.com/api", {
