@@ -45,7 +45,7 @@ const findLoanAmount = () => {
 
 const calculate = async () => {
   let errors = [];
-  var name = document.getElementById("name").value.trim();
+  var name = document.getElementById("name").value;
   var emailAddress = document.getElementById("emailAddress").value;
   var phoneNumber = document.getElementById("phoneNumber").value;
   var propertyName = document.getElementById("propertyName").value;
@@ -137,11 +137,7 @@ const calculate = async () => {
     monthlyRepayment = monthlyRepayment.toLocaleString();
     // console.log(monthlyRepayment);
 
-    document.getElementById(
-      "monthlyRepaymentResult"
-    ).innerText = `₦${monthlyRepayment}`;
-    document.getElementById("dtiResult").innerText = `${dti}%`;
-
+    monthlyIncome = document.getElementById("monthlyIncome").value;
     const jsonObject = {
       name,
       emailAddress,
@@ -160,7 +156,7 @@ const calculate = async () => {
       monthlyRepayment,
       dti,
     };
-    // console.log(jsonObject);
+    console.log(jsonObject);
     try {
       // Post the JSON to an API
       const response = await fetch("http://127.0.0.1:3200/response", {
@@ -179,6 +175,10 @@ const calculate = async () => {
         //   null,
         //   2
         // )}`;
+        document.getElementById(
+          "monthlyRepaymentResult"
+        ).innerText = `₦${monthlyRepayment}`;
+        document.getElementById("dtiResult").innerText = `${dti}%`;
         resultElement.textContent = "Request Submitted successfully";
       } else {
         resultElement.textContent = `Failed to submit. Status: ${response.status}`;
