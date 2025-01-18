@@ -163,7 +163,7 @@ const calculate = async () => {
     // console.log(jsonObject);
     try {
       // Post the JSON to an API
-      const response = await fetch("https://example.com/api", {
+      const response = await fetch("http://127.0.0.1:3200/response", {
         // Replace with your API endpoint
         method: "POST",
         headers: {
@@ -174,11 +174,12 @@ const calculate = async () => {
 
       if (response.ok) {
         const data = await response.json();
-        resultElement.textContent = `Success! Response from server:\n${JSON.stringify(
-          data,
-          null,
-          2
-        )}`;
+        // resultElement.textContent = `Success! Response from server:\n${JSON.stringify(
+        //   data,
+        //   null,
+        //   2
+        // )}`;
+        resultElement.textContent = "Request Submitted successfully";
       } else {
         resultElement.textContent = `Failed to submit. Status: ${response.status}`;
       }
