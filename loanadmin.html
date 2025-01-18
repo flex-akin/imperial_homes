@@ -289,7 +289,12 @@
             data-aos="fade-up"
             data-aos-delay="200"
           >
-            <form role="form" class="php" onsubmit="Auth(); return false">
+            <form
+              role="form"
+              id="auth"
+              class="php"
+              onsubmit="Auth(); return false"
+            >
               <div class="row">
                 <div class="form-group col-md-12">
                   <label for="name" class="label">Email Address</label>
@@ -322,7 +327,7 @@
           </div>
           <div class="col-lg-3"></div>
         </div>
-        <div class="container mt-5">
+        <div id="responseTable" class="container mt-5" style="display: none">
           <h1 class="text-center">Response Table</h1>
           <!-- Responsive Table Wrapper -->
           <div class="table-responsive">

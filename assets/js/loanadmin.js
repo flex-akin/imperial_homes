@@ -1,7 +1,16 @@
 const Auth = () => {
+  const resultElement = document.getElementById("result");
+  const auth = document.getElementById("auth");
+  const responseTable = document.getElementById("responseTable");
   var emailAddress = document.getElementById("emailAddress").value;
   var password = document.getElementById("password").value;
   console.log("AuthValues: ", emailAddress, password);
+  if (emailAddress == "qozimidris@gmail.com" && password == "12345") {
+    responseTable.style.display = "block";
+    auth.style.display = "none";
+  } else {
+    resultElement.textContent = "Authentication Error";
+  }
 };
 
 async function fetchAndDisplayData() {
