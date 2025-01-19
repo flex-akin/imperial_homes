@@ -1,10 +1,11 @@
+var data;
 const Auth = () => {
   const resultElement = document.getElementById("result");
   const auth = document.getElementById("auth");
   const responseTable = document.getElementById("responseTable");
   var emailAddress = document.getElementById("emailAddress").value;
   var password = document.getElementById("password").value;
-  console.log("AuthValues: ", emailAddress, password);
+  // console.log("AuthValues: ", emailAddress, password);
   if (emailAddress == "qozimidris@gmail.com" && password == "12345") {
     responseTable.style.display = "block";
     auth.style.display = "none";
@@ -22,7 +23,7 @@ async function fetchAndDisplayData() {
       resultElement.textContent = `HTTP error! status: ${response.status}`;
     }
 
-    const data = await response.json();
+    data = await response.json();
     console.log("Data: ", data);
 
     // Get the table body element
@@ -127,4 +128,37 @@ async function fetchAndDisplayData() {
     resultElement.textContent = `HTTP error! status: ${error}`;
   }
 }
+
+function generateCSV(
+  data,
+  filename = "Mortgage Pre-qualification Responses.csv"
+) {
+  // Convert array of objects to CSV string
+  const csvRows = [];
+  const headers = Object.keys(data[0]);
+  csvRows.push(headers.join(",")); // Add headers as the first row
+
+  data.forEach((row) => {
+    const values = headers.map((header) => JSON.stringify(row[header] || ""));
+    csvRows.push(values.join(","));
+  });
+
+  // Convert rows to a single string
+  const csvString = csvRows.join("\n");
+
+  // Create a blob and download the file
+  const blob = new Blob([csvString], { type: "text/csv" });
+  const url = URL.createObjectURL(blob);
+
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+}
+
+const Download = () => {
+  generateCSV(data);
+};
 window.onload = fetchAndDisplayData;

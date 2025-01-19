@@ -328,7 +328,17 @@
           <div class="col-lg-3"></div>
         </div>
         <div id="responseTable" class="container mt-5" style="display: none">
-          <h1 class="text-center">Response Table</h1>
+          <div class="d-flex justify-content-between pb-3">
+            <h1 class="">Responses Table</h1>
+            <button
+              class="btn-primary"
+              onclick="Download()"
+              style="border: 2px solid #e52f00; border-radius: 15px"
+            >
+              Export
+            </button>
+          </div>
+
           <!-- Responsive Table Wrapper -->
           <div class="table-responsive">
             <table id="dataTable" class="table table-bordered table-striped">
