@@ -1,16 +1,36 @@
 var data;
-const Auth = () => {
+const { jsPDF } = window.jspdf;
+const Auth = async () => {
   const resultElement = document.getElementById("result");
   const auth = document.getElementById("auth");
   const responseTable = document.getElementById("responseTable");
   var emailAddress = document.getElementById("emailAddress").value;
   var password = document.getElementById("password").value;
-  // console.log("AuthValues: ", emailAddress, password);
-  if (emailAddress == "qozimidris@gmail.com" && password == "12345") {
-    responseTable.style.display = "block";
-    auth.style.display = "none";
-  } else {
-    resultElement.textContent = "Authentication Error";
+  const AuthValues = { emailAddress: emailAddress, password: password };
+  try {
+    // Fetch data from the backend API
+    // Post the JSON to an API
+    const response = await fetch("http://127.0.0.1:3200/auth", {
+      // Replace with your API endpoint
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(AuthValues),
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      if (data) {
+        responseTable.style.display = "block";
+        auth.style.display = "none";
+      } else {
+        resultElement.textContent = "Authentication Error";
+      }
+      // console.log(data);
+    }
+  } catch (error) {
+    console.error("Error:", error);
   }
 };
 
@@ -24,7 +44,7 @@ async function fetchAndDisplayData() {
     }
 
     data = await response.json();
-    console.log("Data: ", data);
+    // console.log("Data: ", data);
 
     // Get the table body element
     const tableBody = document.querySelector("#dataTable tbody");
@@ -158,7 +178,44 @@ function generateCSV(
   document.body.removeChild(link);
 }
 
-const Download = () => {
+const DownloadCSV = () => {
   generateCSV(data);
 };
 window.onload = fetchAndDisplayData;
+
+function exportToPDF(data) {
+  const doc = new jsPDF({ orientation: "portrait" }); // Portrait orientation for columns layout
+
+  // Iterate over each data entry
+  data.forEach((entry, index) => {
+    // Add a new page for each entry, except the first page
+    if (index !== 0) doc.addPage();
+
+    // Add a title for the current entry
+    doc.setFontSize(16);
+    // doc.text(`Entry ${index + 1}`, 15, 20); // Title at the top
+
+    // Format the data into columns: "Key" and "Value"
+    const body = Object.entries(entry).map(([key, value]) => [key, value]);
+
+    // Add the table with Key-Value columns
+    doc.autoTable({
+      head: [["Key", "Value"]], // Header for the two columns
+      body: body, // Key-value pairs
+      styles: {
+        fontSize: 12, // Adjust font size for better readability
+        cellPadding: 4, // Padding for table cells
+      },
+      startY: 30, // Start below the title
+      margin: { left: 15, right: 15 }, // Margins
+      tableWidth: "auto", // Automatically adjust table width
+    });
+  });
+
+  // Save the PDF
+  doc.save("Mortgage Pre-qualification Responses.pdf");
+}
+
+const DownloadPDF = () => {
+  exportToPDF(data);
+};

@@ -56,6 +56,8 @@
       t.parentNode.insertBefore(s, t);
       d.write("<div id='zsiqwidget'></div>");
     </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
 
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -330,13 +332,23 @@
         <div id="responseTable" class="container mt-5" style="display: none">
           <div class="d-flex justify-content-between pb-3">
             <h1 class="">Responses Table</h1>
+            <div class="d-flex gap-3">
+
             <button
               class="btn-primary"
-              onclick="Download()"
+              onclick="DownloadCSV()"
               style="border: 2px solid #e52f00; border-radius: 15px"
             >
-              Export
+              Export AS CSV
             </button>
+            <button
+              class="btn-primary"
+              onclick="DownloadPDF()"
+              style="border: 2px solid #e52f00; border-radius: 15px"
+            >
+              Export AS PDF
+            </button>
+            </div>
           </div>
 
           <!-- Responsive Table Wrapper -->
