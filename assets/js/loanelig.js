@@ -1,21 +1,45 @@
 const findTenor = () => {
   const age = document.getElementById("age").value;
-  const ageNew = 60 - age;
-  if (ageNew >= 20) {
-    document.getElementById(
-      "tenor"
-    ).innerText = `Tenor can't be more than 20 years`;
-    document.getElementById("tenure").setAttribute("max", 20);
-  } else if ((ageNew < 20) & (ageNew > 0)) {
-    document.getElementById(
-      "tenor"
-    ).innerText = `Tenor can't be more than ${ageNew} years`;
-    document.getElementById("tenure").setAttribute("max", ageNew);
-  } else {
+  const funding = document.getElementById("funding").value;
+  const fhfValue = 20;
+  const mofiValue = 10;
+  const commercialValue = 15;
+  const ageNew = 60 - age * 1;
+  // console.log("first ", ageNew);
+  if (age > 60) {
     document.getElementById("tenor").innerText = "You can't get a loan";
-    alert(" you can't get a loan");
-    document.getElementById("age").value = "";
+  } else {
+    if (funding == "commercial") {
+      ageNew > commercialValue
+        ? (document.getElementById("tenure").value = commercialValue)
+        : (document.getElementById("tenure").value = ageNew);
+    }
+    if (funding == "fhf") {
+      ageNew > fhfValue
+        ? (document.getElementById("tenure").value = fhfValue)
+        : (document.getElementById("tenure").value = ageNew);
+    }
+    if (funding == "mofi") {
+      ageNew > mofiValue
+        ? (document.getElementById("tenure").value = mofiValue)
+        : (document.getElementById("tenure").value = ageNew);
+    }
   }
+  // if (ageNew >= 20) {
+  //   document.getElementById(
+  //     "tenor"
+  //   ).innerText = `Tenor can't be more than 20 years`;
+  //   document.getElementById("tenure").setAttribute("max", 20);
+  // } else if ((ageNew < 20) & (ageNew > 0)) {
+  //   document.getElementById(
+  //     "tenor"
+  //   ).innerText = `Tenor can't be more than ${ageNew} years`;
+  //   document.getElementById("tenure").setAttribute("max", ageNew);
+  // } else {
+  //   document.getElementById("tenor").innerText = "You can't get a loan";
+  //   alert(" you can't get a loan");
+  //   document.getElementById("age").value = "";
+  // }
 };
 
 const coBorrowerMonthly = () => {
@@ -87,7 +111,6 @@ const calculate = async () => {
   if (!name) errors.push("Name cannot be empty.");
   if (!emailAddress) errors.push("Email Address cannot be empty.");
   if (!phoneNumber) errors.push("Phone Number cannot be empty.");
-  if (!propertyName) errors.push("Property Name cannot be empty.");
   if (!monthlyIncome) errors.push("Monthly Income cannot be empty.");
   if (!rsa) errors.push("Please select an RSA Option.");
   if (!propertyPrice) errors.push("Property Price cannot be empty.");

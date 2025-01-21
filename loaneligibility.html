@@ -180,7 +180,7 @@
             </div>
             <div class="row">
               <div class="form-group col-md-12">
-                <label for="name" class="label">Name of Property Interested In</label>
+                <label for="name" >Name of Property Interested In</label>
                 <input type="text" name="name" class="form-control" id="propertyName" placeholder="" >
               </div> 
             </div>
@@ -286,7 +286,7 @@
               <div class="form-group col-md-12 mt-3 mt-md-0">
             <label class="label" for="funding">Mortgage Funding Options</label>
 
-<select class="form-control" name="funding" id="funding" style="appearance: auto;">
+<select class="form-control" name="funding" id="funding" style="appearance: auto;" onchange="findTenor()">
   <option class="form-control" value="commercial">Commercial Mortage 28% (Max 15 Years)</option>
   <option class="form-control" value="mofi">MOFI (Ministry of Finance Incorporate) Mortage 12% (Max 10 Years)</option>
   <option class="form-control" value="fhf">FHF (Family Homes Fund) Mortage 17% (Max 20 Years)</option>
@@ -297,7 +297,7 @@
             <div class="row">
               <div class="form-group col-md-12 mt-3 mt-md-0">
                 <label for="name" class="label">Tenor</label> <span style="color: red;" id="tenor"></span>
-                <input type="number" min="1"  class="form-control"  id="tenure" >
+                <input type="number" min="1"  class="form-control"  id="tenure" disabled>
               </div>
 
             </div>
@@ -307,7 +307,7 @@
             </div>
             
             <div class="text-center"><button type="submit" >Calculate</button></div>
-            <div><p class="text-center">Results will be sent to your email</p></div>
+            <!-- <div><p class="text-center">Results will be sent to your email</p></div> -->
           <div class="row result">
             <div class="col-lg-4">
               <span> Monthly Repayment: <i title="Management Fee is added" class="fa-sharp fa-solid fa-circle-info"></i></span>
