@@ -10,16 +10,19 @@ const findTenor = () => {
     document.getElementById("tenor").innerText = "You can't get a loan";
   } else {
     if (funding == "commercial") {
+      document.getElementById("interest").value = "28%";
       ageNew > commercialValue
         ? (document.getElementById("tenure").value = commercialValue)
         : (document.getElementById("tenure").value = ageNew);
     }
     if (funding == "fhf") {
+      document.getElementById("interest").value = "17%";
       ageNew > fhfValue
         ? (document.getElementById("tenure").value = fhfValue)
         : (document.getElementById("tenure").value = ageNew);
     }
     if (funding == "mofi") {
+      document.getElementById("interest").value = "12%";
       ageNew > mofiValue
         ? (document.getElementById("tenure").value = mofiValue)
         : (document.getElementById("tenure").value = ageNew);
@@ -145,7 +148,8 @@ const calculate = async () => {
     loanAmount = parseFloat(loanAmount.replace(/,/g, ""));
     var tenor = document.getElementById("tenure").value;
     tenor = parseInt(tenor);
-    const rate = 27 / 1200;
+    var rate = document.getElementById("interest").value;
+    rate = parseInt(rate);
 
     var monthlyRepayment = PMT(rate, tenor * 12, -1 * loanAmount);
     monthlyRepayment = monthlyRepayment + 0.001 * loanAmount;
