@@ -31,6 +31,7 @@
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
 </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://smtpjs.com/v3/smtp.js"></script>
 <script src="./assets/js/easy-number-separator.js"></script>
 
 
@@ -89,7 +90,7 @@ Message Sent
                     
                   },
                   error : function (err) {
-                    console.log(err)
+                    // console.log(err)
                     $("#team").html(
                        `
                        <div class="alert alert-danger" role="alert">
@@ -108,40 +109,43 @@ Message Sent
           <h1 class="modal-title text-white fs-5" id="exampleModalLabel">Enquiries</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-     <form action="" id="enquiry">
+     <form onsubmit="sendEmail(); return false;" id="enquiry">
         <div class="modal-body d-block" id = 'propertyenquiry'>
-            
+        
         <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label text-white">First Name</label>
-            <input type="text" class="form-control" id="exampleFormControlInput1" required >
+            <label for="homevestFullName" class="form-label text-white">Full Name</label>
+            <input type="text" class="form-control" id="homevestFullName" required >
           </div>
          
         <div class="mb-3">
-            <label for="exampleFormControlInput2" class="form-label text-white">Last Name</label>
-            <input type="text" class="form-control" id="exampleFormControlInput2" required>
+            <label for="homevestEmail" class="form-label text-white">Email Address</label>
+            <input type="email" class="form-control" id="homevestEmail" required>
           </div>
          
         <div class="mb-3">
-            <label for="exampleFormControlInput3" class="form-label text-white">Phone Number</label>
-            <input type="text" class="form-control" id="exampleFormControlInput3" required>
+            <label for="homevestphoneNumber" class="form-label text-white">Phone Number</label>
+            <input type="number" class="form-control" id="homevestphoneNumber" required>
           </div>
-         
-        <div class="mb-3">
-            <label for="exampleFormControlInput4" class="form-label text-white">Email address</label>
-            <input type="email" class="form-control" id="exampleFormControlInput4" required>
-          </div>
-         
         <div class="mb-3">
             <label for="exampleFormControlInput5" class="form-label text-white">Property Name</label>
             <input type="text" class="form-control" id="exampleFormControlInput5" required>
+          </div> 
+
+        <div class="mb-3">
+            <label for="ammountWillingToPay" class="form-label text-white">How much are you willing to pay?</label>
+            <input type="text" class="form-control number-separator" id="ammountWillingToPay" required>
           </div>
+         
+        
 
           <div class="mb-3">
-            <label for="exampleFormControlTextarea1" class="form-label text-white">Specific Enquiry</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea>
+            <label for="currentSalary" class="form-label text-white">How much do you currently earn?</label>
+            <!-- <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" required></textarea> -->
+            <input type="text" class="form-control number-separator" id="currentSalary" required>
           </div>
          
         </div>
+        <pre id="resultRequest" class = 'text-white text-center'></pre>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           <button type="submit" class="btn btn-primary">send</button>
@@ -451,7 +455,7 @@ Message Sent
         Make Enquires
       </button>
 </div>
-<div class="col-lg-3">
+<!-- <div class="col-lg-3">
     <button type="button" class="btn btn-primary w-100 mb-1" data-bs-toggle="modal" data-bs-target="#exampleModalOne">
       Apply For Mortgage Financing
       </button>
@@ -470,7 +474,7 @@ Message Sent
           Apply Using RSA
         </button>
   </a>
-</div>
+</div> -->
 
 </div>
   </div>
@@ -548,6 +552,54 @@ Message Sent
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script>
+    const sendEmail = async()=> {
+      const resultElement = document.getElementById("resultRequest")
+     const fullName= document.getElementById("homevestFullName").value;
+     const email= document.getElementById("homevestEmail").value;
+     const phoneNumber= document.getElementById("homevestphoneNumber").value;
+     const propertyName= document.getElementById("exampleFormControlInput5").value;
+     const ammountWillingToPay= document.getElementById("ammountWillingToPay").value;
+     const currentSalary= document.getElementById("currentSalary").value;
+
+     const jsonObject = {
+      fullName,
+      email,
+      phoneNumber,
+      propertyName,
+      ammountWillingToPay,
+      currentSalary
+     }
+
+     console.log(jsonObject);
+     
+    try {
+      // Post the JSON to an API
+      const response = await fetch("http://127.0.0.1:3200/homevest-enquiry", {
+        // Replace with your API endpoint
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(jsonObject),
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        // console.log(data)
+
+        resultElement.textContent = "Request Submitted successfully";
+      } else {
+        resultElement.textContent = `Failed to submit. Status: ${response.status}`;
+      }
+    } catch (error) {
+      resultElement.textContent = `Error: ${error.message}`;
+    }
+
+    }
+    </script>
+
+  </script>
   <script src="main.js"></script>
 
 </body>
