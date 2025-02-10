@@ -537,7 +537,11 @@ section {
   padding-top: 30px;
   padding-bottom: 30px;
 }
-
+.homevest-title {
+  text-align: center;
+  /* padding-top: 30px; */
+  /* padding-bottom: 30px; */
+}
 .section-title h2 {
   font-size: 24px;
   font-weight: 700;
