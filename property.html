@@ -28,7 +28,7 @@
   <script src="https://kit.fontawesome.com/4635ab7630.js" crossorigin="anonymous"></script>
   <script type="text/javascript">var $zoho=$zoho || {};$zoho.salesiq = $zoho.salesiq || {widgetcode:"siqf6cf0320e38cb576198589a705feabdc53415c34995a31cb0dd7fdf085dad9e7cc8f1ce1ff3c645aa98690130f0eeefc", values:{},ready:function(){}};var d=document;s=d.createElement("script");s.type="text/javascript";s.id="zsiqscript";s.defer=true;s.src="https://salesiq.zoho.com/widget";t=d.getElementsByTagName("script")[0];t.parentNode.insertBefore(s,t);d.write("<div id='zsiqwidget'></div>");</script>
 
-
+  <script src="./assets/js/easy-number-separator.js"></script>
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
@@ -284,6 +284,14 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        let numberDiv = document.querySelector(".price");
+        let numberText = numberDiv.textContent.replace(/₦/g, ''); // Remove ₦ symbol temporarily
+        let formattedNumber = new Intl.NumberFormat('en-NG', { minimumFractionDigits: 2 }).format(numberText);
+        numberDiv.textContent = "₦" + formattedNumber; // Add ₦ back after formatting
+    });
+</script>
   <script src="property.js"></script>
 
 

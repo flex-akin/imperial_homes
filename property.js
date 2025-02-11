@@ -90,9 +90,9 @@ document.addEventListener("DOMContentLoaded", function () {
             }
           </div>
           <div class="d-flex justify-content-between flex-row p-0 ps-0 m-0">
-            <div class="fw-bold fs-6 p-0">₦${data[
-              i
-            ].price.toLocaleString()}</div>
+            <div class="fw-bold price fs-6 p-0">₦${(
+              data[i].price * 1
+            ).toLocaleString("en-NG", { minimumFractionDigits: 2 })}</div>
             <div>
               <div class="felix">
                 <i class="fa-solid fa-bed p-0"></i> ${
