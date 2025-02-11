@@ -186,14 +186,17 @@ const calculate = async () => {
     console.log(jsonObject);
     try {
       // Post the JSON to an API
-      const response = await fetch("http://127.0.0.1:3200/response", {
-        // Replace with your API endpoint
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(jsonObject),
-      });
+      const response = await fetch(
+        "https://ahof.imperialmortgagebank.com/WEBSITE/response",
+        {
+          // Replace with your API endpoint
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(jsonObject),
+        }
+      );
 
       if (response.ok) {
         const data = await response.json();

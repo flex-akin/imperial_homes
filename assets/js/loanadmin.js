@@ -10,14 +10,17 @@ const Auth = async () => {
   try {
     // Fetch data from the backend API
     // Post the JSON to an API
-    const response = await fetch("http://127.0.0.1:3200/auth", {
-      // Replace with your API endpoint
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(AuthValues),
-    });
+    const response = await fetch(
+      "https://ahof.imperialmortgagebank.com/WEBSITE/auth",
+      {
+        // Replace with your API endpoint
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(AuthValues),
+      }
+    );
 
     if (response.ok) {
       const data = await response.json();
