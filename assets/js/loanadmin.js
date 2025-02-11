@@ -41,7 +41,9 @@ async function fetchAndDisplayData() {
   const resultElement = document.getElementById("result");
   try {
     // Fetch data from the backend API
-    const response = await fetch("http://127.0.0.1:3200/response");
+    const response = await fetch(
+      "https://ahof.imperialmortgagebank.com/WEBSITE/response"
+    );
     if (!response.ok) {
       resultElement.textContent = `HTTP error! status: ${response.status}`;
     }
