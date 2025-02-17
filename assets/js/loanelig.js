@@ -149,7 +149,7 @@ const calculate = async () => {
     var tenor = document.getElementById("tenure").value;
     tenor = parseInt(tenor);
     var rate = document.getElementById("interest").value;
-    rate = parseInt(rate);
+    rate = parseInt(rate) / 1200;
 
     var monthlyRepayment = PMT(rate, tenor * 12, -1 * loanAmount);
     monthlyRepayment = monthlyRepayment + 0.001 * loanAmount;
