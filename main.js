@@ -24,6 +24,9 @@ document.addEventListener("DOMContentLoaded", function () {
       var bed = document.querySelector("#bed");
       var unit = document.querySelector("#unit");
       var propertyName = document.getElementById("exampleFormControlInput5");
+      var propertyPrice = document.getElementById("propertyPrice");
+      var propertyID = document.getElementById("propertyID");
+      var propertyCode = document.getElementById("propertyCode");
       var propertyNameOne = document.getElementById(
         "exampleFormControlInput18"
       );
@@ -33,6 +36,9 @@ document.addEventListener("DOMContentLoaded", function () {
         data.propertyType + " " + data.address + ", " + data.state;
       bed.innerHTML = `<p>${data.numberOfBedrooms}</p>`;
       price.innerHTML = `<p>₦${data.price.toLocaleString()}</p>`;
+      propertyPrice.innerHTML = `<p>₦${data.price.toLocaleString()}</p>`;
+      propertyID.innerHTML = `<p>${data.id}</p>`;
+      propertyCode.innerHTML = `<p>${data.propertyCode}</p>`;
       unit.innerHTML = `<p>${data.availableUnits}</p>`;
       loc.innerHTML = `
               <i class="fa-solid fa-location-dot"></i> ${
