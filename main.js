@@ -3,7 +3,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const urlParams = new URLSearchParams(window.location.search);
   const id = parseInt(urlParams.get("id"));
 
-  fetch(`https://propertyapi.ivantage.africa/api/ivantage/property/${id}`)
+  // fetch(`https://propertyapi.ivantage.africa/api/ivantage/property/${id}`)
+  fetch(`https://radiusv2api.ivantage.africa/api/ivantage/property/${id}`)
     .then((response) => {
       if (!response.ok) {
         throw new Error("Network response was not ok");
@@ -35,7 +36,9 @@ document.addEventListener("DOMContentLoaded", function () {
       propertyNameOne.value =
         data.propertyType + " " + data.address + ", " + data.state;
       bed.innerHTML = `<p>${data.numberOfBedrooms}</p>`;
-      price.innerHTML = `<p>₦${data.price.toLocaleString()}</p>`;
+      price.innerHTML = `<p>₦${(data.price * 1).toLocaleString("en-NG", {
+        minimumFractionDigits: 2,
+      })}</p>`;
       propertyPrice.innerHTML = `<p>₦${data.price.toLocaleString()}</p>`;
       propertyID.innerHTML = `<p>${data.id}</p>`;
       propertyCode.innerHTML = `<p>${data.propertyCode}</p>`;
