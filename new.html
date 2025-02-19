@@ -132,7 +132,7 @@ Message Sent
           </div> 
 
         <div class="mb-3">
-            <label for="ammountWillingToPay" class="form-label text-white">How much are you willing to pay?</label>
+            <label for="ammountWillingToPay" class="form-label text-white">How much equity do you have?</label>
             <input type="text" class="form-control number-separator" id="ammountWillingToPay" required>
           </div>
          
@@ -145,6 +145,9 @@ Message Sent
           </div>
          
         </div>
+        <pre id="propertyID" class = 'd-none text-white text-center'></pre>
+        <pre id="propertyCode" class = 'd-none text-white text-center'></pre>
+        <pre id="propertyPrice" class = 'd-none text-white text-center'></pre>
         <pre id="resultRequest" class = 'text-white text-center'></pre>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -561,12 +564,18 @@ Message Sent
      const propertyName= document.getElementById("exampleFormControlInput5").value;
      const ammountWillingToPay= document.getElementById("ammountWillingToPay").value;
      const currentSalary= document.getElementById("currentSalary").value;
+     const propertyPrice= document.getElementById("propertyPrice").innerText;
+     const propertyID= document.getElementById("propertyID").innerText;
+     const propertyCode= document.getElementById("propertyCode").innerText;
 
      const jsonObject = {
       fullName,
       email,
       phoneNumber,
       propertyName,
+      propertyID,
+      propertyCode,
+      propertyPrice,
       ammountWillingToPay,
       currentSalary
      }
@@ -575,7 +584,8 @@ Message Sent
      
     try {
       // Post the JSON to an API
-      const response = await fetch("https://ahof.imperialmortgagebank.com/WEBSITE/homevest-enquiry", {
+      const response = await fetch("http://127.0.0.1:3200/homevest-enquiry", {
+        // const response = await fetch("https://ahof.imperialmortgagebank.com/WEBSITE/homevest-enquiry", {
         // Replace with your API endpoint
         method: "POST",
         headers: {
