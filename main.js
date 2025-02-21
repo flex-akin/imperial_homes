@@ -24,14 +24,17 @@ document.addEventListener("DOMContentLoaded", function () {
       var price = document.querySelector("#price");
       var bed = document.querySelector("#bed");
       var unit = document.querySelector("#unit");
-      var propertyName = document.getElementById("exampleFormControlInput5");
+      var propertyLocation = document.getElementById(
+        "exampleFormControlInput5"
+      );
       var propertyPrice = document.getElementById("propertyPrice");
+      var propertyName = document.getElementById("propertyName");
       var propertyID = document.getElementById("propertyID");
       var propertyCode = document.getElementById("propertyCode");
       var propertyNameOne = document.getElementById(
         "exampleFormControlInput18"
       );
-      propertyName.value =
+      propertyLocation.value =
         data.propertyType + " " + data.address + ", " + data.state;
       propertyNameOne.value =
         data.propertyType + " " + data.address + ", " + data.state;
@@ -40,6 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
         minimumFractionDigits: 2,
       })}</p>`;
       propertyPrice.innerHTML = `<p>₦${data.price.toLocaleString()}</p>`;
+      propertyName.value = `${data.projectName} (${data.propertyType})`;
       propertyID.innerHTML = `<p>${data.id}</p>`;
       propertyCode.innerHTML = `<p>${data.propertyCode}</p>`;
       unit.innerHTML = `<p>${data.availableUnits}</p>`;
