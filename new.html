@@ -128,7 +128,11 @@ Message Sent
           </div>
         <div class="mb-3">
             <label for="exampleFormControlInput5" class="form-label text-white">Property Name</label>
-            <input type="text" class="form-control" id="exampleFormControlInput5" required>
+            <input type="text" class="form-control" id="propertyName" disabled required>
+          </div> 
+          <div class="mb-3">
+            <label for="exampleFormControlInput5" class="form-label text-white">Property Location</label>
+            <input type="text" class="form-control" id="exampleFormControlInput5" disabled required>
           </div> 
 
         <div class="mb-3">
@@ -561,7 +565,8 @@ Message Sent
      const fullName= document.getElementById("homevestFullName").value;
      const email= document.getElementById("homevestEmail").value;
      const phoneNumber= document.getElementById("homevestphoneNumber").value;
-     const propertyName= document.getElementById("exampleFormControlInput5").value;
+     const propName= document.getElementById("propertyName").value;
+     const propertyLocation= document.getElementById("exampleFormControlInput5").value;
      const ammountWillingToPay= document.getElementById("ammountWillingToPay").value;
      const currentSalary= document.getElementById("currentSalary").value;
      const propertyPrice= document.getElementById("propertyPrice").innerText;
@@ -572,7 +577,8 @@ Message Sent
       fullName,
       email,
       phoneNumber,
-      propertyName,
+      propertyName: propName,
+      propertyLocation,
       propertyID,
       propertyCode,
       propertyPrice,
@@ -580,12 +586,12 @@ Message Sent
       currentSalary
      }
 
-    //  console.log(jsonObject);
+     console.log(jsonObject);
      
     try {
       // Post the JSON to an API
-      // const response = await fetch("http://127.0.0.1:3200/homevest-enquiry", {
-        const response = await fetch("https://ahof.imperialmortgagebank.com/WEBSITE/homevest-enquiry", {
+      const response = await fetch("http://127.0.0.1:3200/homevest-enquiry", {
+        // const response = await fetch("https://ahof.imperialmortgagebank.com/WEBSITE/homevest-enquiry", {
         // Replace with your API endpoint
         method: "POST",
         headers: {
