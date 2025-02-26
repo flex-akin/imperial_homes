@@ -14,7 +14,9 @@
   <link href="assets/img/imperial_logo.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
@@ -26,10 +28,8 @@
   <script src="https://kit.fontawesome.com/4635ab7630.js" crossorigin="anonymous"></script>
   <script type="text/javascript">var $zoho=$zoho || {};$zoho.salesiq = $zoho.salesiq || {widgetcode:"siqf6cf0320e38cb576198589a705feabdc53415c34995a31cb0dd7fdf085dad9e7cc8f1ce1ff3c645aa98690130f0eeefc", values:{},ready:function(){}};var d=document;s=d.createElement("script");s.type="text/javascript";s.id="zsiqscript";s.defer=true;s.src="https://salesiq.zoho.com/widget";t=d.getElementsByTagName("script")[0];t.parentNode.insertBefore(s,t);d.write("<div id='zsiqwidget'></div>");</script>
 
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
-</script>
 
-  <script src="./assets/js/easy-number-separator.js"></script>
+
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
 
@@ -37,7 +37,28 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
- 
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script type="text/javascript">
+      (function() {
+          // https://dashboard.emailjs.com/admin/account
+          emailjs.init('EANOqQN8LXgJw7KVu');
+      })();
+  </script>
+  <script type="text/javascript">
+      window.onload = function() {
+          document.getElementById('contact-form').addEventListener('submit', function(event) {
+              event.preventDefault();
+              // generate a five digit number for the contact_number variable
+              // these IDs from the previous steps
+              emailjs.sendForm('contact_service', 'contact_form', this)
+                  .then(function() {
+                      alert('SUCCESS!');
+                  }, function(error) {
+                      alert('FAILED...', error);
+                  });
+          });
+      }
+  </script>
 </head>
 
 <body>
@@ -51,7 +72,7 @@
       <div class="logo d-flex flex-row align-items-center">
         <a href="index.html"><img src="assets/img/imperial_logo.png" alt="" class="img-fluid"></a>
         <div>
-          <p id="imperial" style=" font-weight:700;">Imperial Homes Mortgage Bank</p>
+          <p id="imperial" style="font-size:20px; font-weight:700;">Imperial Homes Mortgage Bank</p>
   
         </div>
   
@@ -92,6 +113,7 @@
               <li><a href="https://www.accountopening.imperialmortgagebank.com/referee/individual">Referee Form</a></li>
               <li><a href="./assets/books/corporatebank.pdf">Corporate i-Bank Form</a></li>
 
+
                   <li><a href="propertyInterest.html">Property Interest Questionaire Form</a></li>
                   <li><a href="nhfform.html">NHF Application Form</a></li>
                   <li><a href="https://www.mortgagebroker.imperialmortgagebank.com/">Realtor</a></li>
@@ -100,7 +122,6 @@
           </li>
           <li><a class="nav-link scrollto" href="contact.html">Support</a></li>
           <li><a class="nav-link scrollto" href="homevest.html">HomeVest</a></li>
-
         
           <li><a class="nav-link scrollto" href="property.html">Properties</a></li>
           <li>
@@ -145,214 +166,66 @@
   </header><!-- End Header -->
     
 
-  <!-- ======= Header ======= -->
-  
-    
-
-  <section id="contact" style="margin-top: 100px; background-color: rgb(253, 249, 244);" class="contact">
+  <section id="contact" style="margin-top: 100px;" class="contact">
     <div class="container" data-aos="fade-up">
 
       <div class="section-title">
-        <p>Mortgage Pre-qualification Form</p>
+        <h2>HomeVest FAQ</h2>
       </div>
+
       <div class="row">
-        <div class="col-lg-3"></div>
-        <div class="col-lg-6 mt-5 mt-lg-0 d-flex " data-aos="fade-up" data-aos-delay="200">
-          <form role="form" class="php" onsubmit="calculate(); return false">
-            <div class="d-flex justify-content-end"><a href="loanadmin.html">Admin Login</a></div>
-            <div class="row">
-              <pre id="result"></pre>
-              <div class="form-group col-md-12">
-                <label for="name" class="label">Name</label>
-                <input type="text" name="name" class="form-control" id="name" placeholder="" >
-              </div> 
-            </div>
-            <div class="row">
-              <div class="form-group col-md-12">
-                <label for="name" class="label">Email Address</label>
-                <input type="text" name="name" class="form-control" id="emailAddress" placeholder="" >
-              </div> 
-            </div>
-            <div class="row">
-              <div class="form-group col-md-12">
-                <label for="name" class="label">Phone Number</label>
-                <input type="text" name="name" class="form-control number" id="phoneNumber" placeholder="" >
-              </div> 
-            </div>
-            <div class="row">
-              <div class="form-group col-md-12">
-                <label for="name" >Name of Property Interested In</label>
-                <input type="text" name="name" class="form-control" id="propertyName" placeholder="" >
-              </div> 
-            </div>
 
-            <div class="row">
-              <div class="form-group col-md-12">
-                <label for="name" class="label">Net Monthly Income</label>
-                <input type="text" name="name" class="form-control number-separator" id="monthlyIncome" placeholder="" >
-              </div> 
-            </div>
-            <div class="row">
-              <div class="form-group col-md-12">
-                <label for="rsa" class="label">Do you have an RSA Account?</label>
-                <div class="d-flex gap-3 ">
-                  <div class="d-flex align-items-center">
 
-                    <input type="radio" 
-                    id="yes" 
-                    name="rsaOptions" 
-                    value="yes">
-                    <label for="yes">Yes</label>
+        <div class="col-lg-12 mt-5 mt-lg-0 d-flex align-items-stretch" data-aos="fade-up" data-aos-delay="200">
+            <section class="process">
+                <div class="process__container">
+                 
+                  <div class="process__accordions">
+                    <ul class="accordions__list p-0">
+                      <li class="accordions__item">
+                        <button class="accordions__control" aria-expanded="false">
+                          <span class="accordions__number">01</span>
+                          <span class="accordions__title">Consultation</span>
+                          <span class="accordions__icon"></span>
+                        </button>
+                        <div class="accordions__content text" aria-hidden="true" style="background: #e52f00; color: whitesmoke;">
+                          <p>During the initial consultation, we will discuss your business goals and objectives, target audience, and current marketing efforts. This will allow us to understand your needs and tailor our services to best fit your requirements.</p>
+                        </div>
+                      </li>
+                      <li class="accordions__item">
+                        <button class="accordions__control" aria-expanded="false">
+                          <span class="accordions__number">02</span>
+                          <span class="accordions__title">Research and Strategy Development</span>
+                          <span class="accordions__icon"></span>
+                        </button>
+                        <div class="accordions__content text" aria-hidden="true">
+                          <p>In today's marketplace, R&D strategy helps a business take a leading position and keeps it competitive, agile, adaptable, and profitable. The research and development concept is one of the earliest stages in creating a business strategy, but the commercial success of the entire project depends on its successful introduction.</p>
+                        </div>
+                      </li>
+                      <li class="accordions__item">
+                                  <button class="accordions__control" aria-expanded="false">
+                                      <span class="accordions__number">03</span>
+                                      <span class="accordions__title">Implementation</span>
+                                      <span class="accordions__icon"></span>
+                                  </button>
+                                  <div class="accordions__content text" aria-hidden="true">
+                                    <p>Strategy implementation is the process of turning your strategic plan into action. Whether you're executing a new marketing plan to increase sales or introducing a new work management software to increase efficiency—your plan is only as valuable as the implementation.</p>  
+                                  </div>
+                              </li>
+                    </ul>
                   </div>
-           <div class="d-flex align-items-center">
-
-             <input type="radio" 
-             id="no" 
-             name="rsaOptions" 
-             value="no">
-             <label for="no">No</label>
-            </div>
-            </div>
-              </div> 
-            </div>
-            <div class="row" >
-              <div class="form-group col-md-12">
-                <label for="coborrower" class="label">Is there a Co-borrower?</label>
-                <div class="d-flex gap-3" >
-                  <div class="d-flex align-items-center">
-
-                    <input type="radio" 
-                    id="yes" 
-                    onclick="coBorrowerMonthly()"
-                    name="coBorrowerOptions" 
-                    value="yes">
-                    <label for="yes">Yes</label>
-                  </div>
-           <div class="d-flex align-items-center">
-
-             <input type="radio" 
-             id="no" 
-             name="coBorrowerOptions" 
-             onclick="coBorrowerMonthly()"
-             value="no">
-             <label for="no">No</label>
-            </div>
-            </div>
-              </div> 
-            </div>
-            <div class="row" id="coBorrowerContainer" style="display: none;" >
-              <div class="form-group col-md-12" >
-                <label for="name" class="label">Net Monthly Income of Co-borrower</label>
-                <input type="text" name="name" class="form-control number-separator" id="coBorrowerMonthlyIncome" placeholder=""  >
-              </div> 
-            </div>
-
-            <div class="row">
-                <div class="form-group col-md-12 mt-3 mt-md-0">
-                    <label for="name" class="label">Property Price</label>
-                    <input type="text" class="form-control number-separator"  id="propertyPrice" placeholder="" >
-                  </div>
-                
-                
-                
-               
-            </div>
-
-            <div class="row">
-                <div class="form-group col-md-12 mt-3 mt-md-0">
-                    <label for="name"  class="label">Equity Contribution (in %)</label><span style="color: red;" id="equityUpdate">Equity can't be less than 20%</span>
-                    <input type="number"  class="form-control" min="20" max="100" onkeyup="findLoanAmount()" onchange="findLoanAmount()" id="equity" placeholder="" >
-                  </div>
-
-             
-            </div>
-            <div class="row">
-              <div class="form-group col-md-12 mt-3 mt-md-0">
-                <label for="name" class="label">Loan Amount</label>
-                <input type="text" class="form-control"  id="loanAmount" disabled  >
-              </div>
-               
-
-                   
-
-            </div>
-            <div class="row">
-                <div class="form-group col-md-12 mt-3 mt-md-0">
-                    <label for="name" class="label">Age</label>
-                    <input type="text" class="form-control number-separator" onkeyup="findTenor()" id="age" >
-                  </div>
-            </div>
-
-            <div class="row">
-              <div class="form-group col-md-12 mt-3 mt-md-0">
-            <label class="label" for="funding">Mortgage Funding Options</label>
-
-<select class="form-control" name="funding" id="funding" style="appearance: auto;" onchange="findTenor()">
-  <option class="form-control" value="commercial">Commercial Mortage 28% (Max 15 Years)</option>
-  <option class="form-control" value="mofi">MOFI (Ministry of Finance Incorporate) Mortage 12% (Max 10 Years)</option>
-  <option class="form-control" value="fhf">FHF (Family Homes Fund) Mortage 17% (Max 20 Years)</option>
-</select>
-</div>
-</div>
-
-            <div class="row">
-              <div class="form-group col-md-12 mt-3 mt-md-0">
-                <label for="name" class="label">Tenor</label> <span style="color: red;" id="tenor"></span>
-                <input type="number" min="1"  class="form-control"  id="tenure" disabled>
-              </div>
-
-            </div>
-            <div class="form-group col-md-12 mt-3 mt-md-0">
-              <label for="name" class="label">Interest Per Annum</label>
-              <input type="text" class="form-control"  id="interest" value="28%" placeholder=""  disabled>
-            </div>
-            
-            <div class="text-center"><button type="submit" >Calculate</button></div>
-            <!-- <div><p class="text-center">Results will be sent to your email</p></div> -->
-          <div class="row result">
-            <div class="col-lg-4">
-              <span> Monthly Repayment: <i title="Management Fee is added" class="fa-sharp fa-solid fa-circle-info"></i></span>
-              <div class="indResult" id="monthlyRepaymentResult">
-
-                
-
-
-              </div>
-             
-
-
-            </div>
-            <div class="col-lg-4">
-              <span> Debt to Income Ratio: </span>
-              <div class="indResult" id="dtiResult">
-              </div>
-
-
-            </div>
-            <div class="col-lg-4">
-              <span> DTI Benchmark: </span>
-              <div class="indResult" id="dtiResult">
-                33%
-              </div>
-
-
-            </div>
-            
-
-          </div>
-          </form>
-          
+                </div>
+              </section>
         </div>
-        <div class="col-lg-3"></div>
-
 </div>
 
 
       </div>
 
-    </div>
+   
   </section><!-- End Contact Us Section -->
  
+
   <footer id="footer">
 
     
@@ -414,17 +287,40 @@
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
-  <script src="assets/js/loanelig.js"></script>
-
   <script src="assets/vendor/aos/aos.js"></script>
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-
+  <script src="assets/vendor/php-email-form/validate.js"></script>
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded',() => {
+const accordions = document.querySelectorAll('.accordions__item');
+
+accordions.forEach(el => {
+    el.addEventListener('click', (e) =>{
+        const self = e.currentTarget;
+        const control = self.querySelector('.accordions__control');
+        const content = self.querySelector('.accordions__content');
+
+        self.classList.toggle('open');
+
+        if(self.classList.contains('open')){
+            control.setAttribute('aria-expanded', true);
+            content.setAttribute('aria-hidden', false);
+            content.style.maxHeight = content.scrollHeight + 'px';
+        }else{
+            control.setAttribute('aria-expanded', false);
+            content.setAttribute('aria-hidden', true);
+            content.style.maxHeight = null;
+        }
+    });
+    });
+})
+  </script>
 
 </body>
 
