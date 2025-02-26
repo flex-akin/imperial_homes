@@ -182,36 +182,7 @@
                  
                   <div class="process__accordions">
                     <ul class="accordions__list p-0">
-                      <li class="accordions__item">
-                        <button class="accordions__control" aria-expanded="false">
-                          <span class="accordions__number">01</span>
-                          <span class="accordions__title">Consultation</span>
-                          <span class="accordions__icon"></span>
-                        </button>
-                        <div class="accordions__content text" aria-hidden="true" style="background: #e52f00; color: whitesmoke;">
-                          <p>During the initial consultation, we will discuss your business goals and objectives, target audience, and current marketing efforts. This will allow us to understand your needs and tailor our services to best fit your requirements.</p>
-                        </div>
-                      </li>
-                      <li class="accordions__item">
-                        <button class="accordions__control" aria-expanded="false">
-                          <span class="accordions__number">02</span>
-                          <span class="accordions__title">Research and Strategy Development</span>
-                          <span class="accordions__icon"></span>
-                        </button>
-                        <div class="accordions__content text" aria-hidden="true">
-                          <p>In today's marketplace, R&D strategy helps a business take a leading position and keeps it competitive, agile, adaptable, and profitable. The research and development concept is one of the earliest stages in creating a business strategy, but the commercial success of the entire project depends on its successful introduction.</p>
-                        </div>
-                      </li>
-                      <li class="accordions__item">
-                                  <button class="accordions__control" aria-expanded="false">
-                                      <span class="accordions__number">03</span>
-                                      <span class="accordions__title">Implementation</span>
-                                      <span class="accordions__icon"></span>
-                                  </button>
-                                  <div class="accordions__content text" aria-hidden="true">
-                                    <p>Strategy implementation is the process of turning your strategic plan into action. Whether you're executing a new marketing plan to increase sales or introducing a new work management software to increase efficiency—your plan is only as valuable as the implementation.</p>  
-                                  </div>
-                              </li>
+                  
                     </ul>
                   </div>
                 </div>
@@ -297,8 +268,54 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded',() => {
-const accordions = document.querySelectorAll('.accordions__item');
+
+const faqData = [
+{ question: "Can I swap my property choice after locking in to a previous property?",answer: "Yes you can, based on availability of the new property and a change request fee."},
+{ question: "What happens if the bank does not have properties in my preferred location but I have already started contributing?",answer: "You can either pick from available properties or take your savings at the end of the specified tenor."},
+{ question: "If I complete my equity contribution earlier than the tenor I picked, do I have to wait till end of the initial tenor to move into my property?",answer: "You are allowed to lockdown a property immediately your contribution is complete. You can move into the property once payment of the full price of purchase is made either through a mortgage or your preferred source of financing."},
+{ question: "If I miss some payments but pay a lump sum to cover the missed payment will this affect my eligibility?",answer: "We advise you do not miss repayments as it helps improve your eligibility for a mortgage. Lump sum payments ahead of payment timelines do not affect your eligibility."},
+{ question: "I do not wish to continue; can I terminate my HomeVest savings after locking into a property?",answer: "Yes you can terminate but termination penalty applies."},
+{ question: "Can I transfer my HomeVest savings account and property allocation to a third party?",answer: "No, you cannot. You can withdraw the funds from your account subject to the Terms and Conditions or transfer the funds to a third party from your account on completion of the tenor."},
+{ question: "What is the penalty charge should I decide to liquidate my HomeVest savings account.",answer: "10% of total saved amount and interest."},
+{ question: "Can I subscribe to multiple HomeVest savings?",answer: "For now, you can only have one HomeVest account."},
+{ question:"Is there a specific time to open the HomeVest saving account?",answer: "There is no deadline to the HomeVest savings account opening but the best time to start is now."},
+{ question: "Can I inspect the property before opening a HomeVest Savings account and at what point can I inspect?",answer: "You can inspect the property"},
+{ question: "What interest do I earn on my savings?",answer: "you earn 15% per annum on your savings"},
+{ question: "When do I start Mortgage application process?",answer: "Mortgage application process commences from month 12 after consistent savings"},
+{ question: "What is the interest rate for the mortgage?",answer: "There are different mortgage financing options whose interest rates vary."},
+{ question: "Can I pre- liquidate my mortgage facility?",answer: "yes, you can subject to the Terms and Conditions"},
+{ question: "Can I increase my monthly contribution?",answer: "Yes, you can"},
+{ question: "Can I co-borrow for my mortgage application?",answer: "Yes you can"},
+{ question: "Can I invest and lock into a property on behalf of someone else?",answer: "You can only do so for yourself"},
+{ question: "Is HomeVest savings applicable to only Lagos?",answer: "HomeVest savings is available in Lagos and Abuja only for now."},
+{ question: "What happens if the property I locked in is not ready by end of my equity savings tenor?",answer: "Details of the property completion date would have been communicated prior to locking in so as to allow subscribers plan appropriately."},
+{ question: "I am a Nigerian living abroad; can I open a HomeVest savings account?",answer: "Yes, you can. Part of the account opening document required is a utility bill not older than 3 months which corresponds to the residential address you provided."},
+{ question: "Can I use 25% of my RSA as part of my equity contribution?",answer: "Yes, you can draw down on your RSA as part of your equity contribution. Imperial Homes will assist you in processing."},
+];
+
+        const accordionContainer = document.querySelector('.accordions__list');
+
+        // Populate accordion dynamically
+        faqData.forEach((item, index) => {
+            const listItem = document.createElement('li');
+            listItem.classList.add('accordions__item');
+
+            listItem.innerHTML = `
+                <button class="accordions__control" aria-expanded="false">
+                    <span class="accordions__number">${(index + 1).toString().padStart(2, '0')}</span>
+                    <span class="accordions__title">${item.question}</span>
+                    <span class="accordions__icon"></span>
+                </button>
+                <div class="accordions__content text" aria-hidden="true" style="background: #e52f00; color: whitesmoke;">
+                    <p>${item.answer}</p>
+                </div>
+            `;
+
+            accordionContainer.appendChild(listItem);
+        });
+
+        // Toggle functionality
+        const accordions = document.querySelectorAll('.accordions__item');
 
 accordions.forEach(el => {
     el.addEventListener('click', (e) =>{
@@ -319,7 +336,7 @@ accordions.forEach(el => {
         }
     });
     });
-})
+
   </script>
 
 </body>
