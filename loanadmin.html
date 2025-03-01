@@ -56,8 +56,8 @@
       t.parentNode.insertBefore(s, t);
       d.write("<div id='zsiqwidget'></div>");
     </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
 
     <script
       src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
@@ -141,7 +141,9 @@
                     >Privacy Policy</a
                   >
                 </li>
-                <li><a class="nav-link scrollto" href="carers.html">Careers</a></li>
+                <li>
+                  <a class="nav-link scrollto" href="carers.html">Careers</a>
+                </li>
               </ul>
             </li>
             <li>
@@ -149,6 +151,7 @@
                 >Product & Services</a
               >
             </li>
+            <li><a class="nav-link scrollto" href="IHPay.html">IHPay</a></li>
             <li class="dropdown">
               <a href="#"
                 ><span>Forms</span>
@@ -211,17 +214,15 @@
             <li>
               <a class="nav-link scrollto" href="contact.html">Support</a>
             </li>
-            <li><a class="nav-link scrollto" href="homevest.html">HomeVest</a></li>
+            <li>
+              <a class="nav-link scrollto" href="homevest.html">HomeVest</a>
+            </li>
 
             <li>
               <a class="nav-link scrollto" href="property.html">Properties</a>
             </li>
             <li>
-              <a
-                class="nav-link scrollto"
-                href="IHPay.html"
-                >IHPay</a
-              >
+              <a class="nav-link scrollto" href="IHPay.html">IHPay</a>
             </li>
             <li>
               <a
@@ -334,21 +335,20 @@
           <div class="d-flex justify-content-between pb-3">
             <h1 class="">Responses Table</h1>
             <div class="d-flex gap-3">
-
-            <button
-              class="btn-primary"
-              onclick="DownloadCSV()"
-              style="border: 2px solid #e52f00; border-radius: 15px"
-            >
-              Export AS CSV
-            </button>
-            <button
-              class="btn-primary"
-              onclick="DownloadPDF()"
-              style="border: 2px solid #e52f00; border-radius: 15px"
-            >
-              Export AS PDF
-            </button>
+              <button
+                class="btn-primary"
+                onclick="DownloadCSV()"
+                style="border: 2px solid #e52f00; border-radius: 15px"
+              >
+                Export AS CSV
+              </button>
+              <button
+                class="btn-primary"
+                onclick="DownloadPDF()"
+                style="border: 2px solid #e52f00; border-radius: 15px"
+              >
+                Export AS PDF
+              </button>
             </div>
           </div>
 
