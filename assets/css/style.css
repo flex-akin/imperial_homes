@@ -2338,16 +2338,22 @@ main {
 .getstarted {
   height: 60px;
 }
-#siqbtndiv{
+#siqbtndiv {
   position: fixed;
   bottom: 60px;
   right: 15px;
   border-color: #e52f00;
 }
 
+#posreg {
+  position: fixed;
+  bottom: 130px;
+  right: 30px;
+  border-color: #e52f00;
+}
 
 .process {
-    font-family: Arial, Helvetica, sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 @media (max-width: 767.98) {
@@ -2391,9 +2397,9 @@ main {
   transition: 0.5s cubic-bezier(0.65, 0.2, 0.65, 1);
   box-shadow: 0px 0.3125rem 0px 0px #191a23;
   border: 0.0625rem solid #191a23;
-    @media (max-width:479.98px){
-        border-radius: 1.5rem;
-    }
+  @media (max-width: 479.98px) {
+    border-radius: 1.5rem;
+  }
 }
 
 .accordions__control {
@@ -2424,8 +2430,7 @@ main {
     font-size: 5vw;
     padding-right: 3vw;
   }
-    
-  }
+}
 
 .accordions__title {
   font-family: Space Grotesk;
@@ -2442,7 +2447,6 @@ main {
   @media (max-width: 767.98px) {
     font-size: 5vw;
   }
-
 }
 
 .accordions__icon {
